@@ -1,0 +1,401 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Hybrid Health Coaching Landscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (~70ch) with wide exhibits that break out to 1040px; AI = blue-green, human = ochre, used as meaning throughout */
+:root {
+  --bg: #f5f7f6;
+  --surface: #ffffff;
+  --ink: #17221f;
+  --muted: #56635f;
+  --rule: #d9e0dd;
+  --ai: #1d6b74;
+  --ai-soft: #dcecee;
+  --human: #a8661a;
+  --human-soft: #f5e7d3;
+  --clin: #8a3b4a;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111816; --surface: #18211f; --ink: #e6ecea; --muted: #9eaba7; --rule: #2c3835;
+    --ai: #6cc0c9; --ai-soft: #1d3638; --human: #e0a35a; --human-soft: #3a2c1a; --clin: #e08a9a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111816; --surface: #18211f; --ink: #e6ecea; --muted: #9eaba7; --rule: #2c3835;
+  --ai: #6cc0c9; --ai-soft: #1d3638; --human: #e0a35a; --human-soft: #3a2c1a; --clin: #e08a9a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 1040px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 72px; display: grid; gap: 64px; }
+.col { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); letter-spacing: -0.01em; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.12rem; }
+p { margin: 0; }
+a { color: var(--ai); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--ai); outline-offset: 2px; border-radius: 2px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); letter-spacing: 0.02em; }
+.stack { display: grid; gap: 16px; }
+.lede { font-size: 1.15rem; color: var(--ink); }
+.meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+section { display: grid; gap: 24px; }
+.section-head { display: grid; gap: 10px; }
+.section-head p { color: var(--muted); max-width: 70ch; }
+
+/* Key messages */
+.messages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.msg { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.msg .n { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ai); }
+.msg p { color: var(--muted); font-size: 0.95rem; }
+.question { border-left: 3px solid var(--human); padding: 4px 0 4px 18px; font-family: var(--font-display); font-size: 1.3rem; line-height: 1.4; max-width: 60ch; }
+
+/* Exhibits */
+.exhibit { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; display: grid; gap: 14px; }
+.scroll { overflow-x: auto; }
+.exhibit svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.exhibit svg.loop { min-width: 640px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 0.85rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.note { font-size: 0.85rem; color: var(--muted); }
+svg text { font-family: var(--font-body); }
+
+/* Products */
+.products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.prod { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; display: grid; gap: 12px; align-content: start; }
+.prod-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.tag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+.prod dl { margin: 0; display: grid; gap: 8px; }
+.prod dt { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+.prod dd { margin: 0; font-size: 0.92rem; }
+
+/* Layer table */
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 0.92rem; }
+th, td { text-align: left; vertical-align: top; padding: 14px 16px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--font-mono); font-weight: 500; font-size: 0.78rem; color: var(--muted); }
+td.layer { font-weight: 600; white-space: nowrap; }
+td.layer small { display: block; font-weight: 400; color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; }
+td ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+tr:last-child td { border-bottom: 0; }
+
+/* Ideas */
+.ideas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.idea { border-top: 2px solid var(--ai); padding-top: 14px; display: grid; gap: 6px; }
+.idea p { color: var(--muted); font-size: 0.95rem; }
+.sources { font-size: 0.85rem; color: var(--muted); display: grid; gap: 6px; padding-left: 18px; margin: 0; }
+
+@media (max-width: 860px) {
+  .messages, .products { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 620px) {
+  .page { gap: 48px; padding-block: 32px 56px; padding-inline: 16px; }
+  .messages, .products, .ideas { grid-template-columns: 1fr; }
+}
+</style>
+
+<main class="page">
+
+  <header class="stack col">
+    <span class="eyebrow">Competitive scan · cardiometabolic coaching</span>
+    <h1>From coaching sessions to a coaching journey</h1>
+    <p class="lede">Six programs show how AI and people are already sharing the work of health coaching. The pattern they converge on goes beyond AI covering some sessions: they redesign the whole journey and decide which touchpoints belong to AI and which belong to people.</p>
+  </header>
+
+  <section aria-labelledby="journey">
+    <div class="section-head">
+      <span class="eyebrow">Redesign the journey</span>
+      <h2 id="journey">What changes when AI accompanies the whole journey</h2>
+      <p>One way to add AI is to let it deliver some of the sessions. The programs reviewed here mostly do something different: coaches stay at the moments that need a person, and AI stays with the resident in the weeks between, flagging when a coach should step in.</p>
+    </div>
+    <figure class="exhibit" style="margin:0">
+      <div class="legend" aria-hidden="true">
+        <span><i class="sw" style="background:var(--human)"></i>Coach touchpoint</span>
+        <span><i class="sw" style="background:var(--ai)"></i>AI touchpoint</span>
+        <span><i class="sw" style="background:var(--clin)"></i>Clinician</span>
+      </div>
+      <div class="scroll">
+        <svg viewBox="0 0 960 470" role="img" aria-label="Session-based model versus journey-based model across six months">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker>
+          </defs>
+          <!-- month axis -->
+          <g font-size="12" fill="var(--muted)">
+            <text x="200" y="24" text-anchor="middle">Month 0</text>
+            <text x="320" y="24" text-anchor="middle">1</text>
+            <text x="440" y="24" text-anchor="middle">2</text>
+            <text x="560" y="24" text-anchor="middle">3</text>
+            <text x="680" y="24" text-anchor="middle">4</text>
+            <text x="800" y="24" text-anchor="middle">5</text>
+            <text x="920" y="24" text-anchor="middle">6</text>
+          </g>
+          <g stroke="var(--rule)" stroke-width="1">
+            <line x1="200" y1="34" x2="200" y2="458"/><line x1="320" y1="34" x2="320" y2="458"/><line x1="440" y1="34" x2="440" y2="458"/><line x1="560" y1="34" x2="560" y2="458"/><line x1="680" y1="34" x2="680" y2="458"/><line x1="800" y1="34" x2="800" y2="458"/><line x1="920" y1="34" x2="920" y2="458"/>
+          </g>
+
+          <!-- Panel A -->
+          <text x="0" y="62" font-size="15" font-weight="600" fill="var(--ink)" font-family="Source Serif 4, Georgia, serif">A. AI covers some sessions</text>
+          <text x="0" y="104" font-size="12.5" fill="var(--muted)">Sessions</text>
+          <line x1="200" y1="100" x2="920" y2="100" stroke="var(--rule)" stroke-width="2"/>
+          <g>
+            <circle cx="200" cy="100" r="11" fill="var(--human)"/>
+            <circle cx="320" cy="100" r="11" fill="var(--human)"/>
+            <circle cx="440" cy="100" r="11" fill="var(--ai)"/>
+            <circle cx="560" cy="100" r="11" fill="var(--ai)"/>
+            <circle cx="680" cy="100" r="11" fill="var(--human)"/>
+            <circle cx="800" cy="100" r="11" fill="var(--human)"/>
+          </g>
+          <text x="0" y="146" font-size="12.5" fill="var(--muted)">Between sessions</text>
+          <rect x="200" y="132" width="720" height="22" rx="4" fill="none" stroke="var(--rule)" stroke-dasharray="4 4"/>
+          <text x="560" y="147" text-anchor="middle" font-size="12" fill="var(--muted)">Resident largely on their own for about four weeks at a time</text>
+
+          <line x1="0" y1="186" x2="960" y2="186" stroke="var(--rule)"/>
+
+          <!-- Panel B -->
+          <text x="0" y="222" font-size="15" font-weight="600" fill="var(--ink)" font-family="Source Serif 4, Georgia, serif">B. AI accompanies the journey</text>
+
+          <text x="0" y="264" font-size="12.5" fill="var(--muted)">AI, every day</text>
+          <rect x="200" y="250" width="720" height="22" rx="6" fill="var(--ai-soft)"/>
+          <g fill="var(--ai)">
+            <rect x="214" y="256" width="3" height="10"/><rect x="244" y="256" width="3" height="10"/><rect x="274" y="256" width="3" height="10"/><rect x="304" y="256" width="3" height="10"/><rect x="334" y="256" width="3" height="10"/><rect x="364" y="256" width="3" height="10"/><rect x="394" y="256" width="3" height="10"/><rect x="424" y="256" width="3" height="10"/><rect x="454" y="256" width="3" height="10"/><rect x="484" y="256" width="3" height="10"/><rect x="514" y="256" width="3" height="10"/><rect x="544" y="256" width="3" height="10"/><rect x="574" y="256" width="3" height="10"/><rect x="604" y="256" width="3" height="10"/><rect x="634" y="256" width="3" height="10"/><rect x="664" y="256" width="3" height="10"/><rect x="694" y="256" width="3" height="10"/><rect x="724" y="256" width="3" height="10"/><rect x="754" y="256" width="3" height="10"/><rect x="784" y="256" width="3" height="10"/><rect x="814" y="256" width="3" height="10"/><rect x="844" y="256" width="3" height="10"/><rect x="874" y="256" width="3" height="10"/><rect x="904" y="256" width="3" height="10"/>
+          </g>
+          <text x="560" y="294" text-anchor="middle" font-size="12" fill="var(--muted)">Lessons, nudges, readings, questions answered in the resident's language</text>
+
+          <text x="0" y="334" font-size="12.5" fill="var(--muted)">Signals flagged</text>
+          <g fill="none" stroke="var(--ai)" stroke-width="2">
+            <path d="M380 322l8 8l-8 8l-8 -8z"/>
+            <path d="M620 322l8 8l-8 8l-8 -8z"/>
+            <path d="M752 322l8 8l-8 8l-8 -8z"/>
+          </g>
+          <text x="392" y="352" font-size="11.5" fill="var(--muted)">readings slip</text>
+          <text x="632" y="352" font-size="11.5" fill="var(--muted)">goes quiet</text>
+          <text x="764" y="352" font-size="11.5" fill="var(--muted)">urgent symptom</text>
+
+          <g stroke="var(--muted)" stroke-width="1.25" fill="none">
+            <path d="M380 340V392" marker-end="url(#ar)"/>
+            <path d="M620 340V392" marker-end="url(#ar)"/>
+            <path d="M752 340V432" marker-end="url(#ar)"/>
+          </g>
+
+          <text x="0" y="404" font-size="12.5" fill="var(--muted)">Coach</text>
+          <line x1="200" y1="400" x2="920" y2="400" stroke="var(--rule)" stroke-width="2"/>
+          <g>
+            <circle cx="200" cy="400" r="11" fill="var(--human)"/>
+            <circle cx="560" cy="400" r="11" fill="var(--human)"/>
+            <circle cx="920" cy="400" r="11" fill="var(--human)"/>
+            <circle cx="380" cy="400" r="7" fill="var(--surface)" stroke="var(--human)" stroke-width="2.5"/>
+            <circle cx="620" cy="400" r="7" fill="var(--surface)" stroke="var(--human)" stroke-width="2.5"/>
+          </g>
+          <text x="200" y="384" text-anchor="middle" font-size="11.5" fill="var(--ink)">Start</text>
+          <text x="560" y="384" text-anchor="middle" font-size="11.5" fill="var(--ink)">Review</text>
+          <text x="900" y="384" text-anchor="end" font-size="11.5" fill="var(--ink)">Review</text>
+
+          <text x="0" y="444" font-size="12.5" fill="var(--muted)">Clinician</text>
+          <circle cx="752" cy="440" r="8" fill="var(--clin)"/>
+        </svg>
+      </div>
+      <figcaption class="note">Illustrative only: the timing and number of touchpoints are examples, not a proposed schedule. Solid coach dots are planned conversations; hollow dots are check-ins triggered by AI signals, with an AI summary in hand.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="loop">
+    <div class="section-head">
+      <span class="eyebrow">The care loop</span>
+      <h2 id="loop">The five layers we compared</h2>
+      <p>Triage is the hinge.</p>
+    </div>
+    <figure class="exhibit" style="margin:0">
+      <div class="scroll">
+        <svg class="loop" viewBox="0 0 760 446" role="img" aria-label="The hybrid care loop in five layers">
+          <defs>
+            <marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker>
+          </defs>
+          <g fill="none" stroke="var(--muted)" stroke-width="1.25">
+            <path d="M652 102V60H104V102" marker-end="url(#la)"/>
+            <path d="M184 130H208" marker-end="url(#la)"/>
+            <path d="M368 130H392" marker-end="url(#la)"/>
+            <path d="M552 130H572" marker-end="url(#la)"/>
+            <path d="M472 158V270H572" marker-end="url(#la)"/>
+            <path d="M472 158V362" marker-end="url(#la)"/>
+            <path d="M652 158V242" marker-end="url(#la)"/>
+            <path d="M652 298V390H552" marker-end="url(#la)"/>
+          </g>
+          <g stroke-width="1.25">
+            <rect x="24" y="102" width="160" height="56" rx="8" fill="var(--surface)" stroke="var(--muted)"/>
+            <rect x="208" y="102" width="160" height="56" rx="8" fill="var(--ai-soft)" stroke="var(--ai)"/>
+            <rect x="392" y="102" width="160" height="56" rx="8" fill="var(--ai-soft)" stroke="var(--ai)" stroke-width="2.5"/>
+            <rect x="572" y="102" width="160" height="56" rx="8" fill="var(--ai-soft)" stroke="var(--ai)"/>
+            <rect x="572" y="242" width="160" height="56" rx="8" fill="var(--human-soft)" stroke="var(--human)"/>
+            <rect x="392" y="362" width="160" height="56" rx="8" fill="var(--surface)" stroke="var(--clin)"/>
+          </g>
+          <g text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">
+            <text x="104" y="126">Resident</text>
+            <text x="288" y="126">1 Data entry</text>
+            <text x="472" y="126">2 Triage</text>
+            <text x="652" y="126">3 AI daily support</text>
+            <text x="652" y="266">4 Human moments</text>
+            <text x="472" y="386">5 Escalation</text>
+          </g>
+          <g text-anchor="middle" font-size="11.5" fill="var(--muted)">
+            <text x="104" y="144">between visits</text>
+            <text x="288" y="144">devices, chats, records</text>
+            <text x="472" y="144">who needs a person</text>
+            <text x="652" y="144">lessons, nudges, answers</text>
+            <text x="652" y="284">motivation, judgment</text>
+            <text x="472" y="404">clinician or hospital</text>
+          </g>
+          <g font-size="11.5" fill="var(--muted)">
+            <text x="378" y="52" text-anchor="middle">AI reaches the resident every day</text>
+            <text x="522" y="262" text-anchor="middle">needs a person</text>
+            <text x="480" y="330">urgent</text>
+            <text x="644" y="204" text-anchor="end">briefs the coach</text>
+            <text x="602" y="382" text-anchor="middle">clinical issue</text>
+          </g>
+        </svg>
+      </div>
+    </figure>
+  </section>
+
+  <section aria-labelledby="products">
+    <div class="section-head">
+      <span class="eyebrow">Product snapshots</span>
+      <h2 id="products">Who each program serves, and the problem it solves</h2>
+      <p>All six are US-based, and five sell to payers (employers, health plans, etc.).</p>
+    </div>
+    <div class="products">
+      <article class="prod">
+        <div class="prod-top"><h3><a href="https://www.omadahealth.com/">Omada</a></h3><span class="tag">B2B2C</span></div>
+        <dl>
+          <div><dt>Serves</dt><dd>Members with prediabetes, diabetes, hypertension, weight or MSK issues, and GLP-1 users</dd></div>
+          <div><dt>Solves</dt><dd>Care gaps between doctor visits ("between-visit care")</dd></div>
+          <div><dt>Market and stage</dt><dd>US only; listed on Nasdaq in June 2025; 2025 revenue about $256–258M</dd></div>
+        </dl>
+      </article>
+      <article class="prod">
+        <div class="prod-top"><h3><a href="https://www.vida.com/">Vida</a></h3><span class="tag">B2B2C</span></div>
+        <dl>
+          <div><dt>Serves</dt><dd>Adults with obesity and metabolic conditions, often with mental health needs</dd></div>
+          <div><dt>Solves</dt><dd>Body and mind treated together, in tiers of increasing intensity</dd></div>
+          <div><dt>Market and stage</dt><dd>US only; private, about $210–217M raised; 2025 round at about $172M valuation</dd></div>
+        </dl>
+      </article>
+      <article class="prod">
+        <div class="prod-top"><h3><a href="https://www.flytehealth.com/">FlyteHealth</a></h3><span class="tag">B2B</span></div>
+        <dl>
+          <div><dt>Serves</dt><dd>People with early cardio-kidney-metabolic risk: obesity, prediabetes, hypertension, high lipids</dd></div>
+          <div><dt>Solves</dt><dd>Physician-led care that keeps GLP-1 use low to control drug cost</dd></div>
+          <div><dt>Market and stage</dt><dd>US only; Series A, about 100 staff</dd></div>
+        </dl>
+      </article>
+      <article class="prod">
+        <div class="prod-top"><h3><a href="https://www.noom.com/about-us/">Noom</a></h3><span class="tag">Mainly D2C</span></div>
+        <dl>
+          <div><dt>Serves</dt><dd>Individual consumers seeking weight loss; extending to diabetes and menopause</dd></div>
+          <div><dt>Solves</dt><dd>Psychology-based behavior change, now paired with micro-dose GLP-1</dd></div>
+          <div><dt>Market and stage</dt><dd>US core, users in about 100 countries; last round in 2021 at $3.7B</dd></div>
+        </dl>
+      </article>
+      <article class="prod">
+        <div class="prod-top"><h3><a href="https://www.goodpath.com/">Goodpath</a></h3><span class="tag">B2B</span></div>
+        <dl>
+          <div><dt>Serves</dt><dd>Employer populations with obesity plus pain, sleep, digestive or mental health issues</dd></div>
+          <div><dt>Solves</dt><dd>Treating the comorbidities together to lower the total cost of care</dd></div>
+          <div><dt>Market and stage</dt><dd>US; stage not covered in the current research</dd></div>
+        </dl>
+      </article>
+      <article class="prod">
+        <div class="prod-top"><h3><a href="https://www.helloheart.com/">Hello Heart</a></h3><span class="tag">B2B2C</span></div>
+        <dl>
+          <div><dt>Serves</dt><dd>Members with hypertension and cardiovascular risk, via large employers, health plans and public sector</dd></div>
+          <div><dt>Solves</dt><dd>Home blood pressure monitoring, medication adherence, cardiovascular risk</dd></div>
+          <div><dt>Market and stage</dt><dd>US only; about $138–149M raised; fees fully at risk on outcomes</dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="layers">
+    <div class="section-head">
+      <span class="eyebrow">Layer by layer</span>
+      <h2 id="layers">How the programs handle each layer</h2>
+    </div>
+    <div class="exhibit scroll">
+      <table>
+        <thead><tr><th scope="col">Layer</th><th scope="col">What the market does</th><th scope="col">Standout examples</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="layer">1 Data entry<small></small></td>
+            <td>Ships connected devices free, pre-paired and auto-syncing, so data arrives without the member having to report it</td>
+            <td><ul>
+              <li><strong>Omada:</strong> scale, BP cuff, glucose meter, CGM by program</li>
+              <li><strong>Hello Heart:</strong> FDA-cleared BP cuff syncing silently to the app</li>
+              <li><strong>Vida:</strong> labs, pharmacy claims, wearables and 100+ apps</li>
+              <li><strong>Noom:</strong> relies on self-logging, which users find time-consuming</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <td class="layer">2 Triage<small>AI, reviewed by people</small></td>
+            <td>Software watches each member's patterns and tells people whom to contact, and when</td>
+            <td><ul>
+              <li><strong>Omada:</strong> coaches reach out proactively when the system flags a change</li>
+              <li><strong>Hello Heart:</strong> AI risk flags (BP spikes, missed doses) trigger self-triage or a pharmacist</li>
+              <li><strong>Vida:</strong> members move between Core, Elevate and Control tiers by risk</li>
+              <li><strong>FlyteHealth:</strong> AI phenotyping sets treatment intensity</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <td class="layer">3 Daily support<small>AI</small></td>
+            <td>Delivers standard content, interprets data, answers questions, nudges habits</td>
+            <td><ul>
+              <li><strong>Hello Heart Nia:</strong> 24/7 assistant that knows the member's history; the LLM handles conversation while guideline-based workflows constrain clinical advice; no diagnosis or dose changes</li>
+              <li><strong>Noom:</strong> 5–15 minute daily CBT micro-lessons</li>
+              <li><strong>Omada:</strong> weekly interactive lessons</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <td class="layer">4 Key moments<small>People</small></td>
+            <td>People own judgment, motivation and prescribing; peers share part of the support load</td>
+            <td><ul>
+              <li><strong>Vida:</strong> one care team of physicians, dietitians, therapists and CBT-trained coaches</li>
+              <li><strong>Omada:</strong> certified diabetes educators plus peer groups</li>
+              <li><strong>Goodpath:</strong> 20+ specialties build each care plan</li>
+            </ul></td>
+          </tr>
+          <tr>
+            <td class="layer">5 Escalation<small>People</small></td>
+            <td>Defined routes from AI to a clinician, and into the member's own doctor</td>
+            <td><ul>
+              <li><strong>Hello Heart:</strong> licensed pharmacists step in on high-risk adherence or drug interactions; the app urges ER visits when needed</li>
+              <li><strong>Omada:</strong> shares data with the member's primary care doctor</li>
+              <li><strong>Vida:</strong> escalation to obesity specialists in the Elevate tier</li>
+            </ul></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="ideas">
+    <div class="section-head">
+      <span class="eyebrow">Ideas worth borrowing</span>
+      <h2 id="ideas">Four patterns that could shape our design</h2>
+    </div>
+    <div class="ideas">
+      <div class="idea"><h3>A passive data entry point</h3><p>Without one, triage only hears residents who keep talking; the ones quietly dropping off stay invisible.</p></div>
+      <div class="idea"><h3>Two-track safety design (Hello Heart)</h3><p>An LLM for the conversation, guideline-based workflows for anything clinical.</p></div>
+      <div class="idea"><h3>Explicit care tiers (Vida)</h3><p>For example: education only, then AI-supported self-management, then coach-led coaching, then clinician review, with clear rules for moving up and down.</p></div>
+      <div class="idea"><h3>Peer support (Omada)</h3><p>Peer groups that take part of the daily support load.</p></div>
+    </div>
+  </section>
+
+</main>
+
+</body></html>
